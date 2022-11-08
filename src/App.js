@@ -4,21 +4,47 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          WPeliculas (Actualización)
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <header id="head-nav">
+        <div id="logo">
+            <h1>WPeliculas</h1>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Series TV</a></li>
+                <li><a href="#">Peliculas</a></li>
+                <li><a href="#">Novedades más visatas</a></li>
+                <li><a href="#">Mi lista</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <div className="clearfix"></div>
+
+    {/* Contenido */}
+
+    <section id="content">
+
+        <div className="movies">
+
+            <h3>Novedad en WPeliculas</h3>
+            
+            <div className="content-movie"><a href="#"><img src="img/DRAGONSRIDERSOFBERK-01-01-00WHORIZONTAL.jpg" /></a></div>
+            
+            <div className="content-movie"><a href="#"><img src="img/capitan-america-655x368.jpg" /></a></div>
+            
+            <div className="content-movie"><a href="#"><img src="img/SPIRITUNTAMEDWHORIZONTAL.jpg" /></a></div>
+
+            
+
+        </div>
+
+    </section>
+
     </div>
   );
 }
