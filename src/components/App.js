@@ -1,9 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Nav from './Nav';
 
 function App() {
   return (
     <div className="App">
+
+      <Nav />
       
       <header id="head-nav">
         <div id="logo">
