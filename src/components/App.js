@@ -1,54 +1,42 @@
 import React, { Component } from 'react';
-import Nav from './Nav';
+import Nav from './Nav'
+import SearchArea from './SearchArea'
 
-function App() {
-  return (
-    <div className="App">
+class App extends Component {
+  constructor() {
+      super();
+      this.state = {
+        movies: [],
+        searchTerm: ''
+      };
+      this.apiKey = process.env.REACT_APP_API;
+  }
 
-      <Nav />
-      
-      <header id="head-nav">
-        <div id="logo">
-            <h1>WPeliculas</h1>
+    handleSubmit = (e) => {
+      e.preventDefault();
+
+      fetch(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.searchTerm}`)
+      .then(data => data.json())
+      .then(data => {
+        console.log(data);
+        this.setState({ movies: [...data.results]})
+      })
+    }
+
+    handleChange = (e) => {
+      this.setState ({ searchTerm: e.target.value })
+    }
+
+    render() {
+      return (
+        <div className="App">
+  
+          <Nav />
+          <SearchArea handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+  
         </div>
-
-        <nav id="menu">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Series TV</a></li>
-                <li><a href="#">Peliculas</a></li>
-                <li><a href="#">Novedades más visatas</a></li>
-                <li><a href="#">Mi lista</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    
-
-    <div className="clearfix"></div>
-
-    {/* Contenido */}
-
-    <section id="content">
-
-        <div className="movies">
-
-            <h3>Novedad en WPeliculas</h3>
-            
-            <div className="content-movie"><a href="#"><img src="img/DRAGONSRIDERSOFBERK-01-01-00WHORIZONTAL.jpg" /></a></div>
-            
-            <div className="content-movie"><a href="#"><img src="img/capitan-america-655x368.jpg" /></a></div>
-            
-            <div className="content-movie"><a href="#"><img src="img/SPIRITUNTAMEDWHORIZONTAL.jpg" /></a></div>
-
-            
-
-        </div>
-
-    </section>
-
-    </div>
-  );
+      );
+    }
 }
 
 export default App;
